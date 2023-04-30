@@ -1,10 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SearchInput from './SearchInput';
 import './styles.css';
 
+const apiUrl = 'https://kitsu.io/api/edge/';
+
 export default function App() {
   const [value, setValue] = useState('');
-  console.log(value);
+
+  useEffect(() => {
+    if (value) {
+      fetch(`${apiUrl}anime?filter[text]=${value}`)
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response);
+        });
+    }
+  }, [value]);
 
   return (
     <div className='App'>
