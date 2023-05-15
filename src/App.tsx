@@ -3,6 +3,7 @@ import SearchInput from './SearchInput';
 import './styles.css';
 
 const apiUrl = 'https://kitsu.io/api/edge/';
+const debounceDelay = 300; // Intervalo de atraso em milissegundos
 
 interface IAnimeData {
   data: {
@@ -22,19 +23,23 @@ export default function App() {
   const [value, setValue] = useState('');
 
   useEffect(() => {
-    if (value) {
-      setIsLoading(true);
-      fetch(`${apiUrl}anime?filter[text]=${value}&page[limit]=12`)
-        .then((response) => response.json())
-        .then((response) => {
-          setInfo(response);
-          setIsLoading(false)
-        })
-        .catch((error) => {
-          console.log('Error fetching data:', error);
-          setIsLoading(false);
-        })
-    }
+    const delayTimer = setTimeout(() => {
+      if (value) {
+        setIsLoading(true);
+        fetch(`${apiUrl}anime?filter[text]=${value}&page[limit]=12`)
+          .then((response) => response.json())
+          .then((response) => {
+            setInfo(response);
+            setIsLoading(false)
+          })
+          .catch((error) => {
+            console.log('Error fetching data:', error);
+            setIsLoading(false);
+          })
+      }
+    }, debounceDelay);
+
+    return () => clearTimeout(delayTimer);
   }, [value]);
 
   return (
