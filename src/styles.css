@@ -2,3 +2,18 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.animes-list {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(200px, 1fr)
+  );
+  grid-gap: 1.5rem;
+
+  list-style: none;
+}
+
+.animes-list img {
+  max-width: 100%;
+}
