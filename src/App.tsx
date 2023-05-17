@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import SearchInput from './SearchInput';
+import SearchInput from './components/SearchInput';
+import AnimesList from './components/AnimesList';
 import './styles.css';
 
 const apiUrl = 'https://kitsu.io/api/edge/';
@@ -52,18 +53,10 @@ export default function App() {
       {isLoading ? (
         <p>Carregando...</p>
       ): (
-        info.data && (
-          <ul className='animes-list'>
-            {info.data.map((anime) => (
-              <li key={anime.id}>
-                <img 
-                  src={anime.attributes.posterImage.small} 
-                  alt={anime.attributes.canonicalTitle}
-                />
-                {anime.attributes.canonicalTitle}
-              </li>
-            ))}
-          </ul>
+        info.data && info.data.length > 0 ? (
+          <AnimesList animes={info.data} />
+        ): (
+          <p>Nenhum anime encontrado.</p>
         )
       )}
     </div>
