@@ -2,11 +2,12 @@
 
 O AnimeFinder é uma aplicação simples de busca de animes, desenvolvida com React, TypeScript e fazendo requisições para a API pública Kitsu.io. O projeto utiliza o pacote PNPM como gerenciador de pacotes.
 
-Deploy do projeto - [AnimeFinder](https://peppy-custard-32831a.netlify.app/) / <https://peppy-custard-32831a.netlify.app/>
-
 ## **Funcionalidades**
 
 * Pesquisa de animes: Os usuários podem pesquisar por animes específicos e obter detalhes sobre eles, como título, sinopse, classificação e gêneros.
+
+## **Deploy**
+Você pode acessar o [AnimeFinder](https://peppy-custard-32831a.netlify.app/) através do seguinte link: <https://peppy-custard-32831a.netlify.app/>
 
 ## **Como executar o projeto**
 * Certifique-se de ter o Node.js instalado em seu sistema.
